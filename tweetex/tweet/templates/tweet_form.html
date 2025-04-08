@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+
+{% block title %}create form{% endblock %}
+
+{% block content %}
+<h1 class="text-center mt-4"> Welcome to TweetZer </h1>
+
+<h5>{% if form.instance.pk %}
+     Edit Tweet {% else %}
+     Create Tweet 
+    {% endif %}
+    <hr>
+    
+    <form method="POST" enctype="multipart/form-data" 
+    class="form">
+        {% csrf_token %}
+        {{ form.as_p }}
+        
+        <button type="submit" class="inline-flex w-[50] bg-blue-400 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded"> Submit </button>
+    </form>
+    <a href="{% url 'Tweet_list' %}">Back to tweet list</a>
+</h5>
+
+
+{% endblock %}
